@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    
-      <router-view/>
-
+    <router-view />
   </div>
 </template>
 
 <script>
-import Navigation from "./components/Navigation.vue"
+import Navigation from "./components/Navigation.vue";
 export default {
-  components:{
-    Navigation
-  }
-}
+  components: {
+    Navigation,
+  },
+};
 </script>
 <style>
-
+body {
+  margin: 0px;
+}
 /* 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

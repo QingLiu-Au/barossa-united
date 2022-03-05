@@ -1,7 +1,7 @@
 <template>
     <div class="navigation">
         <div  v-for="m in menu" v-bind:key="m.name">
-            <router-link class="navi-link" :to="m.to">{{m.name}}</router-link>
+            <router-link class="navi-link" :to="m.to">{{m.name.toLowerCase()}}</router-link>
         </div>
         <img v-if="showImage" src="http://www.barossaunited.com.au/images/BUFCShield_CMYK_FB-01.png" height="300px" />
     </div>
@@ -67,6 +67,7 @@ img {
 .navi-link {
     text-decoration: none;
     margin-left: 100px;
+    margin-top: 20px;
     font-size: 1.8em;
 }
 
