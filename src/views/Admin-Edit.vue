@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <v-select
+      :options="menu"
+      label="RouteName"
+      v-model="selectedRoute"
+    ></v-select>
     <vue-editor v-model="content"></vue-editor>
+    <input type="button" @click="submit()" value="Submit" />
   </div>
 </template>
 
 <script>
 import { VueEditor } from "vue2-editor";
-
+import axios from "axios";
 export default {
   components: {
     VueEditor,
@@ -15,7 +21,29 @@ export default {
   data() {
     return {
       content: "",
+      menu: [],
+      selectedRoute: null,
     };
+  },
+  async created() {
+    await this.getRoutes();
+  },
+  methods: {
+    async getRoutes() {
+      const res = await axios.get("/Routes.php");
+      this.menu = res.data.filter((_) => _.Public === "1");
+    },
+    submit() {
+      console.log(this.selectedRoute.RouteID);
+      console.log(this.content);
+      let page = {
+        routeID: this.selectedRoute.RouteID,
+        page: this.selectedRoute.RouteName,
+        pageContent: this.content,
+      };
+
+      axios.post("/PageContent.php", page);
+    },
   },
 };
 </script>
