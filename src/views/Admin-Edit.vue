@@ -34,8 +34,6 @@ export default {
       this.menu = res.data.filter((_) => _.Public === "1");
     },
     submit() {
-      console.log(this.selectedRoute.RouteID);
-      console.log(this.content);
       let page = {
         routeID: this.selectedRoute.RouteID,
         page: this.selectedRoute.RouteName,

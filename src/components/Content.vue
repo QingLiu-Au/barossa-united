@@ -15,11 +15,17 @@ export default {
     };
   },
   async created() {
-    const result = await axios.get(
-      `/getpagecontent.php?PathName=${this.$route.path}`
-    );
-    this.content = result.data[0].PageContent;
-    console.log(this.$route.path);
+    await this.getContent();
+  },
+  methods: {
+    async getContent() {
+      const result = await axios.get(
+        `/getpagecontent.php?PathName=${this.$route.path}`
+      );
+      if (result.data.length > 0) {
+        this.content = result.data[0].PageContent;
+      }
+    },
   },
 };
 </script>

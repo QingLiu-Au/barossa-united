@@ -5,7 +5,7 @@
         <img alt="Vue logo" src="../assets/logo.png" />
         <Content msg="Welcome to Your Vue.js App" />
       </article>
-      <Navigation id="navi" :showImage="true" />
+      <Navigation id="navi" :showImage="true" @linkClicked="linkClicked" />
     </section>
 
     <footer>
@@ -16,13 +16,18 @@
 
 <script>
 // @ is an alias to /src
-import Content from "@/components/Content.vue";
+import Content from "../components/Content.vue";
 import Navigation from "../components/Navigation.vue";
 export default {
   name: "Home",
   components: {
     Content,
     Navigation,
+  },
+  methods: {
+    linkClicked(route) {
+      console.log(route);
+    },
   },
 };
 </script>

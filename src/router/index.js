@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: "/contact",
-    name: "Content",
+    name: "Contact",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -21,25 +21,37 @@ const routes = [
   },
   {
     path: "/history",
-    name: "Content",
+    name: "History",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
   },
   {
     path: "/presidents-welcome",
-    name: "Content",
+    name: "President Welcome",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
   },
   {
     path: "/fees-registration",
-    name: "Content",
+    name: "Fees Registration",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
   },
   {
     path: "/newsletters",
-    name: "Content",
+    name: "Newsletters",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
+    path: "/player-info",
+    name: "Player Info",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
+    path: "/policies",
+    name: "Policies",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
   },

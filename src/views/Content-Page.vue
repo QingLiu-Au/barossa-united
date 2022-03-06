@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <Navigation id="navi" :showImage="true" :linkClicked="linkClicked" />
+    <Navigation id="navi" :showImage="true" @linkClicked="linkClicked" />
     <section>
       <article>
-        <Content msg="Welcome to Your Vue.js App" />
+        <Content ref="updateContent" />
       </article>
     </section>
 
@@ -14,7 +14,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import Content from "@/components/Content.vue";
+import Content from "../components/Content.vue";
 import Navigation from "../components/Navigation.vue";
 export default {
   name: "Content-Page",
@@ -23,8 +23,8 @@ export default {
     Navigation,
   },
   methods: {
-    linkClicked(route) {
-      console.log(route);
+    linkClicked() {
+      this.$refs.updateContent.getContent();
     },
   },
 };
