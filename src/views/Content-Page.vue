@@ -1,11 +1,10 @@
 <template>
   <div class="home">
+    <Navigation id="navi" :showImage="true" :linkClicked="linkClicked" />
     <section>
       <article>
-        <img alt="Vue logo" src="../assets/logo.png" />
         <Content msg="Welcome to Your Vue.js App" />
       </article>
-      <Navigation id="navi" :showImage="true" />
     </section>
 
     <footer>
@@ -13,16 +12,20 @@
     </footer>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 import Content from "@/components/Content.vue";
 import Navigation from "../components/Navigation.vue";
 export default {
-  name: "Home",
+  name: "Content-Page",
   components: {
     Content,
     Navigation,
+  },
+  methods: {
+    linkClicked(route) {
+      console.log(route);
+    },
   },
 };
 </script>
@@ -43,7 +46,7 @@ export default {
 article {
   float: left;
   width: 70%;
-  background-color: #f1f1f1;
+  background-color: #fff;
 }
 
 /* Clear floats after the columns */

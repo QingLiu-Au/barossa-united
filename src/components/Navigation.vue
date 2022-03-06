@@ -1,13 +1,13 @@
 <template>
   <div v-if="menu.length > 0" class="navigation">
-    <div v-for="m in menu" v-bind:key="m.RouteName">
+    <div v-for="m in menu" v-bind:key="m.RouteName" @click="linkClicked(m)">
       <router-link class="navi-link" :to="m.RoutePath">{{
         m.RouteName.toLowerCase()
       }}</router-link>
     </div>
     <img
       v-if="showImage"
-      src="http://www.barossaunited.com.au/images/BUFCShield_CMYK_FB-01.png"
+      src="../assets/BUFCShield_CMYK_FB-01.png"
       height="300px"
     />
   </div>
@@ -32,6 +32,9 @@ export default {
     async getRoutes() {
       const res = await axios.get("/Routes.php");
       this.menu = res.data.filter((_) => _.Public === "1");
+    },
+    linkClicked(route) {
+      this.$emitter.emit("linkClicked", route);
     },
   },
 };
