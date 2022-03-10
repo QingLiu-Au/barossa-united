@@ -4,6 +4,7 @@
       :options="menu"
       label="RouteName"
       v-model="selectedRoute"
+      @input="selected"
     ></v-select>
     <vue-editor v-model="content"></vue-editor>
     <input type="button" @click="submit()" value="Submit" />
@@ -41,6 +42,14 @@ export default {
       };
 
       axios.post("/PageContent.php", page);
+    },
+    async selected() {
+      const result = await axios.get(
+        `/getpagecontent.php?PathName=${this.selectedRoute.RoutePath}`
+      );
+      if (result.data.length > 0) {
+        this.content = result.data[0].PageContent;
+      }
     },
   },
 };
