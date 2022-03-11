@@ -5,6 +5,7 @@ import store from "./store";
 import axios from "axios";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
+import "@/assets/ql-editor.css";
 
 Vue.config.productionTip = false;
 

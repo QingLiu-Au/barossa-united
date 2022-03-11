@@ -1,9 +1,10 @@
 <template>
-  <div v-html="content"></div>
+  <div class="ql-editor" v-html="content"></div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
   name: "Content",
   props: {
@@ -32,9 +33,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.ql-align-center {
-  text-align: center;
-}
+
 h3 {
   margin: 40px 0 0;
 }

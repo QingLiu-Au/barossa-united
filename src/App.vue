@@ -16,6 +16,7 @@
 
 <script>
 import Navigation from "./components/Navigation.vue";
+
 const DEFAULT_TRANSITION = "fade";
 export default {
   data() {
