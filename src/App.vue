@@ -1,16 +1,27 @@
 <template>
   <div id="app">
-    <!-- <router-view /> -->
-    <!-- name="fade" -->
-    <transition
-      @beforeLeave="beforeLeave"
-      @enter="enter"
-      @afterEnter="afterEnter"
-      :name="transitionName"
-      mode="out-in"
-    >
-      <router-view :key="key" />
-    </transition>
+    <section>
+      <article>
+        <!-- name="fade" -->
+        <transition
+          @beforeLeave="beforeLeave"
+          @enter="enter"
+          @afterEnter="afterEnter"
+          :name="transitionName"
+          mode="out-in"
+        >
+          <router-view v-slot="{ Component }" :key="key">
+            <component ref="routerView" :is="Component" />
+          </router-view>
+        </transition>
+      </article>
+      <Navigation id="navi" :showImage="true" />
+      <!-- @linkClicked="linkClicked" -->
+    </section>
+
+    <footer>
+      <p>Footer</p>
+    </footer>
   </div>
 </template>
 
@@ -121,25 +132,46 @@ body {
 .route-leave-active {
   transition: all 0.5s ease-in;
 }
-/* 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Create two columns/boxes that floats next to each other */
+#navi {
+  float: left;
+  width: 30%;
+  background: #fff;
+}
+
+/* Style the list inside the menu */
+#navi ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  width: 70%;
+  background-color: #f1f1f1;
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
   text-align: center;
-  color: #2c3e50;
+  color: white;
 }
 
-#nav {
-  padding: 30px;
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav,
+  article {
+    width: 100%;
+    height: auto;
+  }
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-} */
 </style>

@@ -1,10 +1,7 @@
 <template>
   <div v-if="menu.length > 0" class="navigation">
-    <div
-      v-for="m in menu"
-      v-bind:key="m.RouteName"
-      @click="$emit('linkClicked')"
-    >
+    <div v-for="m in menu" v-bind:key="m.RouteName">
+      <!-- @click="$emit('linkClicked')" -->
       <router-link class="navi-link" :to="m.RoutePath">{{
         m.RouteName.toLowerCase()
       }}</router-link>
