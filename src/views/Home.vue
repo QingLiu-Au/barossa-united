@@ -15,11 +15,7 @@ export default {
     Content,
     Navigation,
   },
-  methods: {
-    appClicked(route) {
-      console.log(route);
-    },
-  },
+  methods: {},
 };
 </script>
 <style scoped></style>

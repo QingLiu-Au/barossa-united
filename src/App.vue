@@ -3,13 +3,11 @@
     <section>
       <article>
         <!-- name="fade" -->
-        <transition
-          @beforeLeave="beforeLeave"
+        <!-- @beforeLeave="beforeLeave"
           @enter="enter"
           @afterEnter="afterEnter"
-          :name="transitionName"
-          mode="out-in"
-        >
+          :name="transitionName" -->
+        <transition name="route" mode="out-in">
           <router-view v-slot="{ Component }" :key="key">
             <component ref="routerView" :is="Component" />
           </router-view>
@@ -32,7 +30,7 @@ const DEFAULT_TRANSITION = "fade";
 export default {
   data() {
     return {
-      prevHeight: 0,
+      //prevHeight: 0,
       transitionName: DEFAULT_TRANSITION,
     };
   },
@@ -45,36 +43,31 @@ export default {
     Navigation,
   },
   created() {
-    this.$router.beforeEach((to, from, next) => {
-      let transitionName = to.meta.transitionName || from.meta.transitionName;
-
-      if (transitionName === "slide") {
-        const toDepth = to.path.split("/").length;
-        const fromDepth = from.path.split("/").length;
-        transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
-      }
-
-      this.transitionName = transitionName || DEFAULT_TRANSITION;
-
-      next();
-    });
+    // this.$router.beforeEach((to, from, next) => {
+    //   let transitionName = to.meta.transitionName || from.meta.transitionName;
+    //   if (transitionName === "slide") {
+    //     const toDepth = to.path.split("/").length;
+    //     const fromDepth = from.path.split("/").length;
+    //     transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
+    //   }
+    //   this.transitionName = transitionName || DEFAULT_TRANSITION;
+    //   next();
+    // });
   },
   methods: {
-    beforeLeave(element) {
-      this.prevHeight = getComputedStyle(element).height;
-    },
-    enter(element) {
-      const { height } = getComputedStyle(element);
-
-      element.style.height = this.prevHeight;
-
-      setTimeout(() => {
-        element.style.height = height;
-      });
-    },
-    afterEnter(element) {
-      element.style.height = "auto";
-    },
+    // beforeLeave(element) {
+    //   this.// = getComputedStyle(element).height;
+    // },
+    // enter(element) {
+    //   const { height } = getComputedStyle(element);
+    //   element.style.height = this.//;
+    //   setTimeout(() => {
+    //     element.style.height = height;
+    //   });
+    // },
+    // afterEnter(element) {
+    //   element.style.height = "auto";
+    // },
   },
 };
 </script>
@@ -118,19 +111,19 @@ body {
   opacity: 0;
 }
 
-.route-enter-from {
+.route-enter {
   opacity: 0;
-  transform: translateX(200px);
+  transform: translateX(100px);
 }
 .route-enter-active {
-  transition: all 0.5s ease-out;
+  transition: all 0.8s ease-out;
 }
 .route-leave-to {
   opacity: 0;
-  transform: translateX(-200px);
+  transform: translateX(-100px);
 }
 .route-leave-active {
-  transition: all 0.5s ease-in;
+  transition: all 0.8s ease-in;
 }
 /* Create two columns/boxes that floats next to each other */
 #navi {
