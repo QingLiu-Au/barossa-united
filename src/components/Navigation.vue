@@ -1,6 +1,6 @@
 <template>
   <div v-if="menu.length > 0" class="navigation">
-    <div v-for="m in menu" v-bind:key="m.RouteName">
+    <div v-for="m in menu" v-bind:key="m.RouteName" @click="linkClicked">
       <!-- @click="$emit('linkClicked')" -->
       <router-link class="navi-link" :to="m.RoutePath">{{
         m.RouteName.toLowerCase()
@@ -30,7 +30,11 @@ export default {
     const res = await axios.get("/Routes.php");
     this.menu = res.data.filter((_) => _.Public === "1");
   },
-  methods: {},
+  methods: {
+    linkClicked() {
+      this.$store.commit("setLoading", true);
+    },
+  },
 };
 </script>
 

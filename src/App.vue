@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div id="get-loading" v-if="$store.state.loading">
+      <img id="get-loader" height="80" src="./assets/loader.gif" />
+    </div>
     <section>
       <article>
         <!-- name="fade" -->
@@ -30,11 +33,17 @@ const DEFAULT_TRANSITION = "fade";
 export default {
   data() {
     return {
-      //prevHeight: 0,
+      loaded: false,
       transitionName: DEFAULT_TRANSITION,
     };
   },
   computed: {
+    // loading() {
+    //   if (this.$store.state.loading !== this.loaded) {
+    //     this.loaded = this.$store.state.loading;
+    //   }
+    //   return this.loaded;
+    // },
     key() {
       return this.$route.path.replace(/\//g, "_");
     },
@@ -72,6 +81,28 @@ export default {
 };
 </script>
 <style>
+#get-loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#get-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
 body {
   margin: 0px;
 }
@@ -141,7 +172,7 @@ body {
 article {
   float: left;
   width: 70%;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
 }
 
 /* Clear floats after the columns */
