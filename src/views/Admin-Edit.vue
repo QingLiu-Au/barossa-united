@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="container m-5 p-5">
     <v-select
       :options="menu"
       label="RouteName"
@@ -27,6 +27,11 @@ export default {
     };
   },
   async created() {
+    // check user group
+    if (this.$store.state.userGroup != "admin") {
+      this.$router.push("/");
+    }
+    this.$store.commit("setPath", "/admin-page");
     await this.getRoutes();
   },
   methods: {

@@ -16,6 +16,7 @@ Vue.config.productionTip = false;
 
 Vue.component("v-select", vSelect);
 
+// set base URL
 axios.defaults.baseURL = "http://localhost:8082/5work/barossa-united";
 
 // Add a request interceptor

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -7,6 +8,8 @@ export default new Vuex.Store({
   state: {
     loading: false,
     path: "/",
+    userGroup: "customer",
+    routes: [],
   },
   mutations: {
     setLoading(state, payload) {
@@ -18,7 +21,19 @@ export default new Vuex.Store({
         state.loading = true;
       }
     },
+    setUserGroup(state, payload) {
+      state.userGroup = payload;
+    },
+    setRoutes(state, payload) {
+      state.routes = payload;
+    },
   },
-  actions: {},
+  actions: {
+    getRoutes(state) {
+      axios.get("/Routes.php").then((res) => {
+        state.commit("setRoutes", res.data);
+      });
+    },
+  },
   modules: {},
 });

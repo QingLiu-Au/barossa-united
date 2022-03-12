@@ -27,12 +27,18 @@ export default {
   },
   data() {
     return {
-      menu: [],
+      // menu: [],
     };
   },
-  async created() {
-    const res = await axios.get("/Routes.php");
-    this.menu = res.data.filter((_) => _.Public === "1");
+  computed: {
+    menu() {
+      return this.$store.state.userGroup == "admin"
+        ? this.$store.state.routes
+        : this.$store.state.routes.filter((_) => _.Public === "1");
+    },
+  },
+  created() {
+    //const res = await axios.get("/Routes.php");
   },
   methods: {
     linkClicked(index) {
