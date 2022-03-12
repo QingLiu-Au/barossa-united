@@ -17,7 +17,6 @@
         </transition>
       </article>
       <Navigation id="navi" :showImage="true" />
-      <!-- @linkClicked="linkClicked" -->
     </section>
 
     <footer>
@@ -38,12 +37,6 @@ export default {
     };
   },
   computed: {
-    // loading() {
-    //   if (this.$store.state.loading !== this.loaded) {
-    //     this.loaded = this.$store.state.loading;
-    //   }
-    //   return this.loaded;
-    // },
     key() {
       return this.$route.path.replace(/\//g, "_");
     },
@@ -52,16 +45,16 @@ export default {
     Navigation,
   },
   created() {
-    // this.$router.beforeEach((to, from, next) => {
-    //   let transitionName = to.meta.transitionName || from.meta.transitionName;
-    //   if (transitionName === "slide") {
-    //     const toDepth = to.path.split("/").length;
-    //     const fromDepth = from.path.split("/").length;
-    //     transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
-    //   }
-    //   this.transitionName = transitionName || DEFAULT_TRANSITION;
-    //   next();
-    // });
+    this.$router.beforeEach((to, from, next) => {
+      // let transitionName = to.meta.transitionName || from.meta.transitionName;
+      // if (transitionName === "slide") {
+      //   const toDepth = to.path.split("/").length;
+      //   const fromDepth = from.path.split("/").length;
+      //   transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
+      // }
+      // this.transitionName = transitionName || DEFAULT_TRANSITION;
+      next();
+    });
   },
   methods: {
     // beforeLeave(element) {
@@ -147,14 +140,14 @@ body {
   transform: translateX(100px);
 }
 .route-enter-active {
-  transition: all 0.8s ease-out;
+  transition: all 0.5s ease-out;
 }
 .route-leave-to {
   opacity: 0;
   transform: translateX(-100px);
 }
 .route-leave-active {
-  transition: all 0.8s ease-in;
+  transition: all 0.5s ease-in;
 }
 /* Create two columns/boxes that floats next to each other */
 #navi {

@@ -6,6 +6,11 @@ import axios from "axios";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 import "@/assets/ql-editor.css";
+import BootstrapVue from "bootstrap-vue/dist/bootstrap-vue.esm";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import "bootstrap/dist/css/bootstrap.css";
+
+Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
@@ -16,7 +21,7 @@ axios.defaults.baseURL = "http://localhost:8082/5work/barossa-united";
 // Add a request interceptor
 axios.interceptors.request.use(
   function (config) {
-    // store.commit("setLoading", true);
+    store.commit("setLoading", true);
     return config;
   },
   function (error) {
