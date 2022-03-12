@@ -1,9 +1,7 @@
 <template>
-  <div
-    class="ql-editor bg-white"
-    v-html="content"
-    style="background: white"
-  ></div>
+  <div class="container m-5 p-5">
+    <div class="bg-white ql-editor" v-html="content"></div>
+  </div>
 </template>
 
 <script>
@@ -37,9 +35,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-bg-white {
-  background: white;
-}
 h3 {
   margin: 40px 0 0;
 }

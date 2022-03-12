@@ -1,6 +1,10 @@
 <template>
   <div v-if="menu.length > 0" class="navigation">
-    <div v-for="m in menu" v-bind:key="m.RouteName" @click="linkClicked">
+    <div
+      v-for="(m, index) in menu"
+      v-bind:key="m.RouteName"
+      @click="linkClicked(index)"
+    >
       <!-- @click="$emit('linkClicked')" -->
       <router-link class="navi-link" :to="m.RoutePath">{{
         m.RouteName.toLowerCase()
@@ -23,16 +27,22 @@ export default {
   },
   data() {
     return {
-      menu: [],
+      // menu: [],
     };
   },
-  async created() {
-    const res = await axios.get("/Routes.php");
-    this.menu = res.data.filter((_) => _.Public === "1");
+  computed: {
+    menu() {
+      return this.$store.state.userGroup == "admin"
+        ? this.$store.state.routes
+        : this.$store.state.routes.filter((_) => _.Public === "1");
+    },
+  },
+  created() {
+    //const res = await axios.get("/Routes.php");
   },
   methods: {
-    linkClicked() {
-      this.$store.commit("setLoading", true);
+    linkClicked(index) {
+      this.$store.commit("setPath", this.menu[index].RoutePath);
     },
   },
 };
