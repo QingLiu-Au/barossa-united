@@ -1,9 +1,18 @@
 <template>
   <div v-if="menu.length > 0" class="navigation">
+    <textra
+      v-if="hover"
+      :data="words"
+      :timer="1"
+      :infinite="true"
+      filter="left-right"
+    />
     <div
       v-for="(m, index) in menu"
       v-bind:key="m.RouteName"
       @click="linkClicked(index)"
+      @mouseover="onhover"
+      @mouseleave="leave"
     >
       <!-- @click="$emit('linkClicked')" -->
       <router-link class="navi-link" :to="m.RoutePath">{{
@@ -19,7 +28,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "Navigation",
   props: {
@@ -27,7 +35,8 @@ export default {
   },
   data() {
     return {
-      // menu: [],
+      words: ["home page"],
+      hover: false,
     };
   },
   computed: {
@@ -43,6 +52,13 @@ export default {
   methods: {
     linkClicked(index) {
       this.$store.commit("setPath", this.menu[index].RoutePath);
+    },
+    onhover() {
+      console.log("hover");
+      this.hover = true;
+    },
+    leave() {
+      this.hover = false;
     },
   },
 };

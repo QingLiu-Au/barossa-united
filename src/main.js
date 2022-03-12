@@ -9,8 +9,10 @@ import "@/assets/ql-editor.css";
 import BootstrapVue from "bootstrap-vue/dist/bootstrap-vue.esm";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "bootstrap/dist/css/bootstrap.css";
+import Textra from "vue-textra";
 
 Vue.use(BootstrapVue);
+Vue.use(Textra);
 
 Vue.config.productionTip = false;
 
