@@ -10,11 +10,7 @@ import BootstrapVue from "bootstrap-vue/dist/bootstrap-vue.esm";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Textra from "vue-textra";
-import "@/assets/ama/style-ama.css";
-// import "@assets/ama/anime.min.js";npm install --save @assets/ama/anime.min.js npm install --save vue-animejs
-import "@/assets/ama/charming.min.js";
-import "@/assets/ama/demo-ama.js";
-import "animejs/lib/anime.min.js";
+
 Vue.use(BootstrapVue);
 Vue.use(Textra);
 

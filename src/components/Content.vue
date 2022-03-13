@@ -1,11 +1,6 @@
 <template>
   <div class="container m-5 p-5">
     <div class="bg-white ql-editor" v-html="content"></div>
-    <div class="menu menu--ama">
-      <a class="menu__item" href="#">
-        <span class="menu__item-name"> home</span>
-      </a>
-    </div>
   </div>
 </template>
 

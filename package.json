@@ -14,7 +14,6 @@
     "gsap": "^3.9.1",
     "vee-validate": "^4.5.9",
     "vue": "^2.6.11",
-    "vue-animejs": "^2.1.1",
     "vue-router": "^3.2.0",
     "vue-select": "^3.18.3",
     "vue2-editor": "^2.10.3",
