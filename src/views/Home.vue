@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <section id="hero" class="d-flex align-items-center">
+  <div class="home bg-white" style="height: 100vh">
+    <section id="hero" class="align-items-center">
       <div>
         <div id="carouselimages" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -34,8 +34,8 @@
           </button>
         </div>
       </div>
+      <Content ref="routerView" />
     </section>
-    <Content ref="routerView" />
   </div>
 </template>
 

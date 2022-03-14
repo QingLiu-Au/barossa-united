@@ -1,6 +1,7 @@
 <template>
-  <div class="container m-5 p-5">
+  <div class="container my-5 py-5" style="height: 100vh">
     <div class="bg-white ql-editor" v-html="content"></div>
+    <!-- style="overflow: hidden" -->
   </div>
 </template>
 

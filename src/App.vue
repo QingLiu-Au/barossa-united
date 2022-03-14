@@ -4,22 +4,30 @@
       <img id="get-loader" height="80" src="./assets/loader.gif" />
     </div>
     <Navigation id="navi" :showImage="true" />
-    <section>
-      <article>
-        <!-- name="fade" -->
-        <!-- @beforeLeave="beforeLeave"
+
+    <div>
+      <section class="d-flex col">
+        <div style="left: 0; width: 20%">
+          <img src="./assets/img/r-left.jpg" />
+        </div>
+        <article class="bg-white" style="width: 60%, height: 100vh;">
+          <!-- name="fade" -->
+          <!-- @beforeLeave="beforeLeave"
           @enter="enter"
           @afterEnter="afterEnter"
           :name="transitionName" -->
-        <transition name="route" mode="out-in">
-          <router-view v-slot="{ Component }" :key="key">
-            <component ref="routerView" :is="Component" />
-          </router-view>
-        </transition>
-      </article>
-    </section>
-
-    <footer>
+          <transition name="route" mode="out-in">
+            <router-view v-slot="{ Component }" :key="key">
+              <component ref="routerView" :is="Component" />
+            </router-view>
+          </transition>
+        </article>
+        <div style="right: 0; width: 20%">
+          <img src="./assets/img/r-right.jpg" />
+        </div>
+      </section>
+    </div>
+    <footer style="position: fixed; width: 100%; bottom: 0">
       <p>Footer</p>
     </footer>
   </div>
@@ -156,18 +164,6 @@ body {
 /* Create two columns/boxes that floats next to each other */
 #navi {
   background: #00000060;
-}
-
-/* Style the list inside the menu
-#navi ul {
-  list-style-type: none;
-  padding: 0;
-}
- */
-article {
-  float: left;
-  /* width: 70%;
-  background-color: #f1f1f1; */
 }
 
 /* Clear floats after the columns */
