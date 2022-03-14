@@ -3,6 +3,7 @@
     <div id="get-loading" v-if="$store.state.loading">
       <img id="get-loader" height="80" src="./assets/loader.gif" />
     </div>
+    <Navigation id="navi" :showImage="true" />
     <section>
       <article>
         <!-- name="fade" -->
@@ -16,7 +17,6 @@
           </router-view>
         </transition>
       </article>
-      <Navigation id="navi" :showImage="true" />
     </section>
 
     <footer>
@@ -155,21 +155,19 @@ body {
 }
 /* Create two columns/boxes that floats next to each other */
 #navi {
-  float: left;
-  width: 30%;
-  background: #fff;
+  background: #00000060;
 }
 
-/* Style the list inside the menu */
+/* Style the list inside the menu
 #navi ul {
   list-style-type: none;
   padding: 0;
 }
-
+ */
 article {
   float: left;
-  width: 70%;
-  /* background-color: #f1f1f1; */
+  /* width: 70%;
+  background-color: #f1f1f1; */
 }
 
 /* Clear floats after the columns */
