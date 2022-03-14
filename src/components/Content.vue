@@ -16,14 +16,10 @@ export default {
       return this.$store.state.content;
     },
   },
-  async created() {
-    await this.getContent();
+  created() {
+    this.$store.dispatch("getContent", this.$route.path);
   },
-  methods: {
-    async getContent() {
-      this.$store.dispatch("getContent", this.$route.path);
-    },
-  },
+  methods: {},
 };
 </script>
 
