@@ -5,12 +5,25 @@ import store from "./store";
 import axios from "axios";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
+
+// import 3rd party css
 import "@/assets/ql-editor.css";
+import "@/assets/css/style.css";
+import "@/assets/css/animate.css/animate.min.css";
+import "@/assets/css/aos/aos.css";
+import "@/assets/css/glightbox/css/glightbox.min.css";
+import "@/assets/css/swiper/swiper-bundle.min.css";
+// import "@/assets/css/"
+
+import "popper.js/dist/popper.min.js";
 import BootstrapVue from "bootstrap-vue/dist/bootstrap-vue.esm";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import Textra from "vue-textra";
 
 Vue.use(BootstrapVue);
+Vue.use(Textra);
 
 Vue.config.productionTip = false;
 
