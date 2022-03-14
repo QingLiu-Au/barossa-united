@@ -7,7 +7,10 @@
 
     <div>
       <section class="d-flex col">
-        <div style="left: 0; width: 20%">
+        <div class="d-none d-md-block" style="left: 0; width: 20%">
+          <img src="./assets/img/r-left.jpg" />
+        </div>
+        <div class="d-none d-sm-block d-md-none" style="left: 0; width: 10%">
           <img src="./assets/img/r-left.jpg" />
         </div>
         <article class="bg-white" style="width: 60%, height: 100vh;">
@@ -22,19 +25,21 @@
             </router-view>
           </transition>
         </article>
-        <div style="right: 0; width: 20%">
+        <div class="d-none d-md-block" style="right: 0; width: 20%">
+          <img src="./assets/img/r-right.jpg" />
+        </div>
+        <div class="d-none d-sm-block d-md-none" style="right: 0; width: 10%">
           <img src="./assets/img/r-right.jpg" />
         </div>
       </section>
     </div>
-    <footer style="position: fixed; width: 100%; bottom: 0">
-      <p>Footer</p>
-    </footer>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navigation from "./components/Navigation.vue";
+import Footer from "./components/Footer.vue";
 
 const DEFAULT_TRANSITION = "fade";
 export default {
@@ -50,39 +55,13 @@ export default {
     },
   },
   components: {
+    Footer,
     Navigation,
   },
   created() {
     this.$store.dispatch("getRoutes");
-    this.beforeRoutes();
   },
-  methods: {
-    // beforeLeave(element) {
-    //   this.// = getComputedStyle(element).height;
-    // },
-    // enter(element) {
-    //   const { height } = getComputedStyle(element);
-    //   element.style.height = this.//;
-    //   setTimeout(() => {
-    //     element.style.height = height;
-    //   });
-    // },
-    // afterEnter(element) {
-    //   element.style.height = "auto";
-    // },
-    beforeRoutes() {
-      this.$router.beforeEach((to, from, next) => {
-        let transitionName = to.meta.transitionName || from.meta.transitionName;
-        if (transitionName === "slide") {
-          const toDepth = to.path.split("/").length;
-          const fromDepth = from.path.split("/").length;
-          transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
-        }
-        this.transitionName = transitionName || DEFAULT_TRANSITION;
-        next();
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 <style>
@@ -111,7 +90,7 @@ export default {
 body {
   margin: 0px;
 }
-
+/* 
 .slide-left-enter-active,
 .slide-left-leave-active,
 .slide-right-enter-active,
@@ -145,18 +124,18 @@ body {
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
-}
+} */
 
 .route-enter {
   opacity: 0;
-  transform: translateX(100px);
+  transform: translateY(-50px);
 }
 .route-enter-active {
   transition: all 0.5s ease-out;
 }
 .route-leave-to {
   opacity: 0;
-  transform: translateX(-100px);
+  transform: translateY(50px);
 }
 .route-leave-active {
   transition: all 0.5s ease-in;
@@ -179,14 +158,5 @@ footer {
   padding: 10px;
   text-align: center;
   color: white;
-}
-
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-  nav,
-  article {
-    width: 100%;
-    height: auto;
-  }
 }
 </style>

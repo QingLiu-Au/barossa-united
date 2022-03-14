@@ -22,8 +22,6 @@
               v-for="(m, index) in menu"
               v-bind:key="m.RouteName"
               @click="linkClicked(index)"
-              @mouseover="onhover"
-              @mouseleave="leave"
             >
               <router-link class="navi-link" :to="m.RoutePath">{{
                 m.RouteName.toLowerCase()
@@ -62,13 +60,6 @@ export default {
     linkClicked(index) {
       this.$store.commit("setPath", this.menu[index].RoutePath);
     },
-    onhover() {
-      console.log("hover");
-      this.hover = true;
-    },
-    leave() {
-      this.hover = false;
-    },
   },
 };
 </script>
@@ -77,18 +68,8 @@ export default {
 #header .logo a {
   color: #fff;
 }
-/* img {
-  margin: 50px 0px 0px 100px;
-}
-.navigation {
-  margin-top: 50px;
-  float: left;
-  width: 30%;
-}*/
+
 .navi-link {
   text-decoration: none;
-  /* margin-left: 100px;
-  margin-top: 20px;
-  font-size: 1.8em; */
 }
 </style>

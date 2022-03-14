@@ -10,6 +10,7 @@ export default new Vuex.Store({
     path: "/",
     userGroup: "customer",
     routes: [],
+    content: "",
   },
   mutations: {
     setLoading(state, payload) {
@@ -27,12 +28,21 @@ export default new Vuex.Store({
     setRoutes(state, payload) {
       state.routes = payload;
     },
+    setContent(state, payload) {
+      state.content = payload;
+    },
   },
   actions: {
     getRoutes(state) {
       axios.get("/Routes.php").then((res) => {
         state.commit("setRoutes", res.data);
       });
+    },
+    async getContent(state, payload) {
+      const result = await axios.get(`/getpagecontent.php?PathName=${payload}`);
+      if (result.data.length > 0) {
+        state.commit("setContent", result.data[0].PageContent);
+      }
     },
   },
   modules: {},
