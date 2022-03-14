@@ -3,8 +3,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
       <div class="container-fluid">
         <img src="../assets/img/logo.png" style="height: 50px" />
-        <!--  @click="linkClicked(0)" -->
-        <a class="navbar-brand" href="#/">Borassa United</a>
+        <!--  -->
+        <a class="navbar-brand" href="#/" @click="linkClicked(0)"
+          >Borassa United</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -16,7 +18,11 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNavAltMarkup"
+          style="padding-right: 30px"
+        >
           <div v-if="menu.length > 0" class="navbar-nav ms-auto">
             <div
               v-for="(m, index) in menu"
