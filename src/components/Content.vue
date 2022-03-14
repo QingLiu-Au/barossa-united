@@ -6,29 +6,22 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Content",
   props: {
     msg: String,
   },
-  data() {
-    return {
-      content: null,
-    };
+  computed: {
+    content() {
+      return this.$store.state.content;
+    },
   },
   async created() {
     await this.getContent();
   },
   methods: {
     async getContent() {
-      const result = await axios.get(
-        `/getpagecontent.php?PathName=${this.$route.path}`
-      );
-      if (result.data.length > 0) {
-        this.content = result.data[0].PageContent;
-      }
+      this.$store.dispatch("getContent", this.$route.path);
     },
   },
 };
