@@ -1,6 +1,6 @@
 <template>
-  <div class="container my-5 py-5" style="height: 100vh">
-    <div class="bg-white ql-editor" v-html="content"></div>
+  <div class="container" style="height: 100vh">
+    <div class="bg-white ql-editor sized-box" v-html="content"></div>
     <!-- style="overflow: hidden" -->
   </div>
 </template>
@@ -25,6 +25,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.sized-box::before {
+  display: block;
+  content: " ";
+  height: 50px;
+}
 h3 {
   margin: 40px 0 0;
 }

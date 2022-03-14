@@ -1,6 +1,6 @@
 <template>
-  <footer style="position: fixed; width: 100%; bottom: 0">
-    <p>Footer</p>
+  <footer class="fixed-bottom">
+    <p>Borassa United</p>
   </footer>
 </template>
 

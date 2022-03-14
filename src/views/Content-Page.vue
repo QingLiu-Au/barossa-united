@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <Content ref="updateContent" />
+    <Content class="mt-5 pt-5" ref="updateContent" />
   </div>
 </template>
 <script>
