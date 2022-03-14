@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="bg-white">
     <Content ref="updateContent" />
   </div>
 </template>
