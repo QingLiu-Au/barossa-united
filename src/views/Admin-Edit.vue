@@ -46,7 +46,7 @@ export default {
         pageContent: this.content,
       };
 
-      axios.post("/PageContent.php", page);
+      axios.post("/ManagePageContent.php", page);
     },
     async selected() {
       const result = await axios.get(
