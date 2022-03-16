@@ -32,7 +32,9 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <Content ref="routerView" />
+      <div class="card mx-5" style="top: -50px">
+        <Content ref="routerView" style="padding-top: 0px" />
+      </div>
     </section>
   </div>
 </template>
