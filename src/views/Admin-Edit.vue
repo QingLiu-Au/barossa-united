@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async getRoutes() {
-      const res = await axios.get("/Routes.php");
+      const res = await axios.get("/GetRoutes.php");
       this.menu = res.data.filter((_) => _.Public === "1");
     },
     submit() {
