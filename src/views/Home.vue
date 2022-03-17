@@ -4,13 +4,17 @@
       <div id="carouselimages" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../assets/img/1.jpg" class="d-block w-100" alt="..." />
+            <img
+              src="../assets/img/1-2016.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
           </div>
           <div class="carousel-item">
-            <img src="../assets/img/1.jpg" class="d-block w-100" alt="..." />
+            <img src="../assets/img/5.jpg" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="../assets/img/1.jpg" class="d-block w-100" alt="..." />
+            <img src="../assets/img/7.jpg" class="d-block w-100" alt="..." />
           </div>
         </div>
         <button
