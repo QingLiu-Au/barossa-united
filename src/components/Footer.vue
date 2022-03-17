@@ -6,10 +6,16 @@
           connect with us on social media
         </div>
         <div class="col-lg-7 col-md-6 mb-2 mb-md-0">
-          <a href="#"><i class="fa fa-facebook-square"></i></a>
+          <a href="#"
+            ><font-awesome-icon :icon="['fab', 'facebook-square']"
+          /></a>
 
-          <a href="#"><i class="fa fa-twitter-square"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"
+            ><font-awesome-icon :icon="['fab', 'twitter-square']"
+          /></a>
+          <a href="#"
+            ><font-awesome-icon :icon="['fab', 'instagram-square']"
+          /></a>
         </div>
       </div>
     </div>

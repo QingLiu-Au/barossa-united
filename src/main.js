@@ -21,7 +21,19 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Textra from "vue-textra";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+  faTwitterSquare,
+  faFacebookSquare,
+  faInstagramSquare,
+} from "@fortawesome/free-brands-svg-icons";
 
+library.add(faTwitterSquare);
+library.add(faFacebookSquare);
+library.add(faInstagramSquare);
+
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.use(BootstrapVue);
 Vue.use(Textra);
 
