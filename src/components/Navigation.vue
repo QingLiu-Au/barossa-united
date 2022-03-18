@@ -1,6 +1,8 @@
 <template>
   <header id="header" class="fixed-top d-flex align-items-cente">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark w-100 text-capitalize"
+    >
       <div class="container-fluid">
         <img src="../assets/img/logo.png" style="height: 50px" />
         <!--  -->
@@ -30,7 +32,7 @@
               @click="linkClicked(index)"
             >
               <router-link class="navi-link" :to="m.RoutePath">{{
-                m.RouteName.toLowerCase()
+                m.RouteName
               }}</router-link>
             </div>
           </div>
@@ -55,7 +57,7 @@ export default {
   computed: {
     menu() {
       return this.$store.state.userGroup == "admin"
-        ? this.$store.state.routes
+        ? this.$store.state.routes.filter((_) => _.RoutePath != "/admin-portal")
         : this.$store.state.routes.filter((_) => _.Public === "1");
     },
   },

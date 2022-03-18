@@ -34,7 +34,7 @@ export default new Vuex.Store({
   },
   actions: {
     getRoutes(state) {
-      axios.get("/Routes.php").then((res) => {
+      axios.get("/GetRoutes.php").then((res) => {
         state.commit("setRoutes", res.data);
       });
     },
