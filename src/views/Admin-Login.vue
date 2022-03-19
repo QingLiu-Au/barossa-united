@@ -1,10 +1,18 @@
-<template></template>
+<template>
+  <div class="row h-100" style="width: 65vw">
+    <div class="col-sm-12 my-auto">
+      <div class="card card-block w-25 text-center">
+        <button class="btn btn-success" @click="login">Login</button>
+      </div>
+    </div>
+  </div>
+</template>
 
 <script>
 import axios from "axios";
 export default {
   async created() {
-    await this.login();
+    //await this.login();
   },
   methods: {
     async login() {
