@@ -54,12 +54,14 @@ export default {
       return this.$route.path.replace(/\//g, "_");
     },
   },
+  watch: {},
   components: {
     Footer,
     Navigation,
   },
   created() {
     this.$store.dispatch("getRoutes");
+    this.$store.dispatch("getImagePath");
     this.getUserSecret();
   },
   methods: {

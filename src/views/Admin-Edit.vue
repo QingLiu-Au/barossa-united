@@ -29,6 +29,9 @@
       >
         Media Library
       </button>
+      <button @click="signOut" type="button" class="btn btn-danger">
+        Sign Out
+      </button>
     </div>
     <FileUpload v-if="selectedFunction == 'media'" />
     <div v-if="selectedFunction == 'content'">
@@ -102,6 +105,11 @@ export default {
       if (result.data.length > 0) {
         this.content = result.data[0].PageContent;
       }
+    },
+    signOut() {
+      window.sessionStorage.removeItem("borassa-user");
+      this.$store.state.userGroup = "customer";
+      this.$router.push("/");
     },
   },
 };

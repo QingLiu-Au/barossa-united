@@ -68,17 +68,19 @@
           <!-- <input placeholder="Page.." type="text" /> -->
           <v-select
             :options="pages"
-            @input="selectedPage(index)"
+            v-model="mediaFiles[index].PageName"
             style="width: 30vw"
           ></v-select>
+          <!-- @input="selectedPage(index)" -->
           <!-- v-model="selectedRoute" -->
         </td>
         <td>
           <v-select
             :options="identifier"
-            @input="selectedIdentifier(index)"
+            v-model="mediaFiles[index].Identifier"
             style="width: 10vw"
           ></v-select>
+          <!-- @input="selectedIdentifier(index)" -->
         </td>
         <td>
           <button type="button" @click="remove(index)" class="btn btn-danger">
@@ -88,7 +90,9 @@
       </tr>
     </table>
     <div class="text-center">
-      <button type="button" class="btn btn-success">SAVE</button>
+      <button type="button" @click="submit" class="btn btn-success">
+        SAVE
+      </button>
     </div>
   </div>
 </template>
@@ -189,10 +193,17 @@ export default {
       // save it
       this.save(formData);
     },
-    selectedPage(index) {},
-    selectedIdentifier(index) {},
+    async submit() {
+      try {
+        const res = await axios.post(
+          "/ManagePageMediaFiles.php",
+          this.mediaFiles
+        );
+      } catch (_) {}
+    },
     remove(index) {
       this.mediaFiles.splice(index, 1);
+      this.mediaFiles[index].Deleted = true;
     },
   },
 };
