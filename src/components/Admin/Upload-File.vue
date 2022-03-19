@@ -47,6 +47,49 @@
         <a href="javascript:void(0)" @click="reset()">Try again</a>
       </p>
     </div>
+
+    <!-- iterate media files -->
+    <table v-if="mediaFiles.length > 0" class="container my-5">
+      <tr>
+        <td></td>
+        <td>Page</td>
+        <td>Identifier</td>
+        <td></td>
+      </tr>
+      <tr v-for="(f, index) in mediaFiles" :key="index">
+        <td>
+          <img
+            class="img-fluid"
+            :src="getImageUrl(f.FilePath)"
+            style="height: 100px !important"
+          />
+        </td>
+        <td>
+          <!-- <input placeholder="Page.." type="text" /> -->
+          <v-select
+            :options="pages"
+            @input="selectedPage(index)"
+            style="width: 30vw"
+          ></v-select>
+          <!-- v-model="selectedRoute" -->
+        </td>
+        <td>
+          <v-select
+            :options="identifier"
+            @input="selectedIdentifier(index)"
+            style="width: 10vw"
+          ></v-select>
+        </td>
+        <td>
+          <button type="button" @click="remove(index)" class="btn btn-danger">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </table>
+    <div class="text-center">
+      <button type="button" class="btn btn-success">SAVE</button>
+    </div>
   </div>
 </template>
 
@@ -56,6 +99,7 @@ const STATUS_INITIAL = 0,
   STATUS_SAVING = 1,
   STATUS_SUCCESS = 2,
   STATUS_FAILED = 3;
+
 export default {
   name: "UploadFile",
   data() {
@@ -65,10 +109,20 @@ export default {
       currentStatus: null,
       uploadFieldName: "photos",
       file: "",
+      mediaFiles: [],
+      pages: ["Main"],
+      identifier: [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
     };
   },
   mounted() {
     this.reset();
+  },
+  async created() {
+    await this.getAllMediaFiles();
+    const routeName = this.$store.state.routes
+      .filter((_) => _.Public === "1")
+      .map((_) => _.RouteName);
+    this.pages = this.pages.concat(routeName);
   },
   computed: {
     isInitial() {
@@ -85,6 +139,17 @@ export default {
     },
   },
   methods: {
+    async getAllMediaFiles() {
+      try {
+        const res = await axios.get("/getMediaFiles.php?PathName=allpages");
+        if (res && res.data) {
+          this.mediaFiles = res.data;
+        }
+      } catch (_) {}
+    },
+    getImageUrl(path) {
+      return axios.defaults.baseURL + "/" + path;
+    },
     reset() {
       // reset form to initial state
       this.currentStatus = STATUS_INITIAL;
@@ -95,9 +160,17 @@ export default {
       // upload data to the server
       this.currentStatus = STATUS_SAVING;
       axios
-        .post("/fileupload.php", formData)
+        .post("/ManageMediaFiles.php", formData)
         .then((x) => {
-          this.uploadedFiles = [].concat(x);
+          this.uploadedFiles = [].concat(x.data);
+          this.mediaFiles.push({
+            Deleted: 0,
+            FileID: "10",
+            FileName: "tem.jpg",
+            FilePath: x.data,
+            Identifier: "",
+            PageName: "",
+          });
           this.currentStatus = STATUS_SUCCESS;
         })
         .catch((err) => {
@@ -115,6 +188,11 @@ export default {
       });
       // save it
       this.save(formData);
+    },
+    selectedPage(index) {},
+    selectedIdentifier(index) {},
+    remove(index) {
+      this.mediaFiles.splice(index, 1);
     },
   },
 };

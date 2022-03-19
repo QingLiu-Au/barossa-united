@@ -53,6 +53,7 @@ export default {
     Content,
     Navigation,
   },
+  created() {},
   methods: {},
 };
 </script>

@@ -76,10 +76,17 @@ export default {
     this.$store.commit("setPath", "/admin-page");
     // await this.getRoutes();
     this.menu = this.$store.state.routes.filter((_) => _.Public === "1");
+    this.$store.commit("setLoading", false);
   },
 
   methods: {
     submit() {
+      let c = this.content.split("<img src=");
+      this.content = c.join("<img class='img-fluid' src=");
+      // this.content.replace(
+      //   "<img src=",
+      //   "<img class='img-fluid' src="
+      // );
       let page = {
         routeID: this.selectedRoute.RouteID,
         page: this.selectedRoute.RouteName,
