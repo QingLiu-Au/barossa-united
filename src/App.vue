@@ -54,14 +54,24 @@ export default {
       return this.$route.path.replace(/\//g, "_");
     },
   },
+  watch: {},
   components: {
     Footer,
     Navigation,
   },
   created() {
     this.$store.dispatch("getRoutes");
+    this.$store.dispatch("getImagePath");
+    this.getUserSecret();
   },
-  methods: {},
+  methods: {
+    getUserSecret() {
+      const user = window.sessionStorage.getItem("borassa-user");
+      if (user) {
+        this.$store.commit("setUserGroup", "admin");
+      }
+    },
+  },
 };
 </script>
 <style>

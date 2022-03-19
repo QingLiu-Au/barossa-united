@@ -1,20 +1,15 @@
 <template>
   <div class="home bg-white" style="height: 100vh">
-    <section id="hero" class="align-items-center">
+    <section v-if="files.length > 0" id="hero" class="align-items-center">
       <div id="carouselimages" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="../assets/img/1-2016.jpg"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img src="../assets/img/5.jpg" class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src="../assets/img/7.jpg" class="d-block w-100" alt="..." />
+          <div
+            v-for="(imgfile, index) in files"
+            :key="index"
+            class="carousel-item"
+            v-bind:class="{ active: index == 0 }"
+          >
+            <img :src="getImageUrl(index)" class="d-block w-100" alt="..." />
           </div>
         </div>
         <button
@@ -47,13 +42,30 @@
 // @ is an alias to /src
 import Content from "../components/Content.vue";
 import Navigation from "../components/Navigation.vue";
+import axios from "axios";
 export default {
   name: "Home",
   components: {
     Content,
     Navigation,
   },
-  methods: {},
+  data() {
+    return {
+      files: [],
+    };
+  },
+  async created() {
+    try {
+      const res = await axios.get("/GetMediaFiles.php?PathName=home");
+      this.files = res.data;
+      this.files.sort((a, b) => a.Identifier.localeCompare(b.Identifier));
+    } catch (_) {}
+  },
+  methods: {
+    getImageUrl(index) {
+      return axios.defaults.baseURL + "/" + this.files[index].FilePath;
+    },
+  },
 };
 </script>
 <style scoped></style>

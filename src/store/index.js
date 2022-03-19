@@ -11,6 +11,7 @@ export default new Vuex.Store({
     userGroup: "customer",
     routes: [],
     content: "",
+    imagePath: [],
   },
   mutations: {
     setLoading(state, payload) {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     setContent(state, payload) {
       state.content = payload;
     },
+    setImagePath(state, payload) {
+      state.imagePath = payload;
+    },
   },
   actions: {
     getRoutes(state) {
@@ -43,6 +47,10 @@ export default new Vuex.Store({
       if (result.data.length > 0) {
         state.commit("setContent", result.data[0].PageContent);
       }
+    },
+    async getImagePath(state) {
+      const result = await axios.get("/GetMediaFiles.php?PathName=allpages");
+      if (result.data) state.commit("setImagePath", result.data);
     },
   },
   modules: {},
