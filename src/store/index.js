@@ -12,6 +12,7 @@ export default new Vuex.Store({
     routes: [],
     content: "",
     imagePath: [],
+    sideImagesTag: "Main",
   },
   mutations: {
     setLoading(state, payload) {
@@ -34,6 +35,13 @@ export default new Vuex.Store({
     },
     setImagePath(state, payload) {
       state.imagePath = payload;
+    },
+    setSideImages(state, payload) {
+      let pageIndex = state.routes.findIndex((_) => _.RoutePath == payload);
+      let tag = pageIndex == -1 ? "Main" : state.routes[pageIndex].RouteName;
+      let index = state.imagePath.findIndex((_) => _.PageName == tag);
+      state.sideImagesTag =
+        index == -1 ? "Main" : state.imagePath[index].PageName;
     },
   },
   actions: {

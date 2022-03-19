@@ -76,6 +76,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // console.log(`to ${to.fullPath}, state ${store.state.path}`);
+  store.commit("setSideImages", to.path);
   next();
 });
 
