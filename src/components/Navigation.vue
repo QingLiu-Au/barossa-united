@@ -57,8 +57,12 @@ export default {
   computed: {
     menu() {
       return this.$store.state.userGroup == "admin"
-        ? this.$store.state.routes.filter((_) => _.RoutePath != "/admin-portal")
-        : this.$store.state.routes.filter((_) => _.Public === "1");
+        ? this.$store.state.routes.filter(
+            (_) => _.RoutePath != "/admin-portal" && _.Hidden === "0"
+          )
+        : this.$store.state.routes.filter(
+            (_) => _.Public === "1" && _.Hidden === "0"
+          );
     },
   },
   created() {

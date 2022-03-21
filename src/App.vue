@@ -8,10 +8,11 @@
     <div>
       <section class="d-flex col">
         <div class="d-none d-md-block" style="left: 0; width: 20%">
-          <img src="./assets/img/r-left.jpg" />
+          <img :src="getSideImage('A')" />
         </div>
         <div class="d-none d-sm-block d-md-none" style="left: 0; width: 10%">
-          <img src="./assets/img/r-left.jpg" />
+          <img :src="getSideImage('A')" style="object-position: center" />
+          <!-- <img src="./assets/img/r-left.jpg" /> -->
         </div>
         <article class="bg-white" style="width: 60%, height: 100vh;">
           <!-- name="fade" -->
@@ -26,10 +27,12 @@
           </transition>
         </article>
         <div class="d-none d-md-block" style="right: 0; width: 20%">
-          <img src="./assets/img/r-right.jpg" />
+          <img :src="getSideImage('B')" />
         </div>
         <div class="d-none d-sm-block d-md-none" style="right: 0; width: 10%">
-          <img src="./assets/img/r-right.jpg" />
+          <img :src="getSideImage('B')" />
+
+          <!-- <img src="./assets/img/r-right.jpg" /> -->
         </div>
       </section>
     </div>
@@ -40,6 +43,7 @@
 <script>
 import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
+import axios from "axios";
 
 const DEFAULT_TRANSITION = "fade";
 export default {
@@ -70,6 +74,14 @@ export default {
       if (user) {
         this.$store.commit("setUserGroup", "admin");
       }
+    },
+    getSideImage(identifier) {
+      let tag = this.$store.state.sideImagesTag;
+      if (tag == "Home") tag = "Main";
+      let path = this.$store.state.imagePath.find(
+        (_) => _.PageName == tag && _.Identifier == identifier
+      );
+      if (path) return axios.defaults.baseURL + "/" + path.FilePath;
     },
   },
 };

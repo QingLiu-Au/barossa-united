@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import store from "../store/index";
 
 Vue.use(VueRouter);
 
@@ -56,6 +57,36 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
   },
   {
+    path: "/page1",
+    name: "Hidden-page1",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
+    path: "/page2",
+    name: "Hidden-page2",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
+    path: "/page3",
+    name: "Hidden-page3",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
+    path: "/page4",
+    name: "Hidden-page4",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
+    path: "/page5",
+    name: "Hidden-page5",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+  },
+  {
     path: "/admin-page",
     name: "Admin",
     component: () =>
@@ -65,12 +96,18 @@ const routes = [
     path: "/admin-portal",
     name: "AdminLogin",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Admin-Login.vue"),
+      import(/* webpackChunkName: "about" */ "../views/Admin-Portal.vue"),
   },
 ];
 
 const router = new VueRouter({
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  // console.log(`to ${to.fullPath}, state ${store.state.path}`);
+  store.commit("setSideImages", to.path);
+  next();
 });
 
 export default router;
