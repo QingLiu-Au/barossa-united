@@ -11,7 +11,7 @@
           <img :src="getSideImage('A')" />
         </div>
         <div class="d-none d-sm-block d-md-none" style="left: 0; width: 10%">
-          <img :src="getSideImage('A')" />
+          <img :src="getSideImage('A')" style="object-position: center" />
           <!-- <img src="./assets/img/r-left.jpg" /> -->
         </div>
         <article class="bg-white" style="width: 60%, height: 100vh;">
