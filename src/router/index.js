@@ -94,7 +94,7 @@ const routes = [
   },
   {
     path: "/admin-portal",
-    name: "AdminLogin",
+    name: "Admin Login",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Admin-Portal.vue"),
   },
@@ -106,7 +106,17 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // console.log(`to ${to.fullPath}, state ${store.state.path}`);
-  store.commit("setSideImages", to.path);
+  let path = store.state.routes.find((_) => _.RoutePath === to.path);
+  if (path) {
+    if (path.Hidden == "0") {
+      store.commit("setSideImages", to.path);
+      next();
+    } else {
+      store.commit("setSideImages", "/home");
+      // next({ path: "/" });
+      next("/");
+    }
+  }
   next();
 });
 

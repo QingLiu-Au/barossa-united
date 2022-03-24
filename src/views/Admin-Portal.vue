@@ -26,7 +26,9 @@
             <label for="Password" class="form-label">Password</label>
             <input type="password" class="form-control" id="Password" />
           </div>
-          <button class="btn btn-success" @click="login()">Login</button>
+          <button type="button" class="btn btn-success" v-on:click="login">
+            Login
+          </button>
         </form>
       </div>
     </div>
@@ -37,30 +39,28 @@
 import axios from "axios";
 export default {
   created() {
-    this.checkAuthentication();
+    let user = window.sessionStorage.getItem("borassa-user");
+    if (user) {
+      this.$router.push("/admin-page");
+    }
   },
   methods: {
-    checkAuthentication() {
-      let user = window.sessionStorage.getItem("borassa-user");
-      if (user) {
-        this.$router.push("/admin-page");
-      }
-    },
     async login() {
       let user = {
         isLogin: true,
         email: "user@example.com",
         password: "password",
       };
-      const result = await axios.post("/manageAdminLogin.php", user);
-
-      if (result.data == 1) {
-        window.sessionStorage.setItem("borassa-user", JSON.stringify(user));
-        this.$store.commit("setUserGroup", "admin");
-        this.$router.push("/admin-page");
-      } else {
-        this.$router.push("/");
-      }
+      try {
+        const result = await axios.post("/manageAdminLogin.php", user);
+        if (result.data == 1) {
+          window.sessionStorage.setItem("borassa-user", JSON.stringify(user));
+          this.$store.commit("setUserGroup", "admin");
+          this.$router.push("/admin-page");
+        } else {
+          this.$router.push("/");
+        }
+      } catch (_) {}
     },
   },
 };
