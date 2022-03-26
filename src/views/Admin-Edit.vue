@@ -42,7 +42,7 @@
         v-model="selectedRoute"
         @input="selected"
       ></v-select>
-      <vue-editor v-model="content"></vue-editor>
+      <vue-editor v-model="content" class="text-black"></vue-editor>
       <input type="button" @click="submit()" value="Submit" />
     </div>
     <div v-if="selectedFunction == ''">
