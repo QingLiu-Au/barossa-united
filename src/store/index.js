@@ -51,7 +51,7 @@ export default new Vuex.Store({
       });
     },
     async getContent(state, payload) {
-      const result = await axios.get(`/getpagecontent.php?PathName=${payload}`);
+      const result = await axios.get(`/GetPageContent.php?PathName=${payload}`);
       if (result.data.length > 0) {
         state.commit("setContent", result.data[0].PageContent);
       }

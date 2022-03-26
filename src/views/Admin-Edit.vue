@@ -100,7 +100,7 @@ export default {
     },
     async selected() {
       const result = await axios.get(
-        `/getpagecontent.php?PathName=${this.selectedRoute.RoutePath}`
+        `/GetPageContent.php?PathName=${this.selectedRoute.RoutePath}`
       );
       if (result.data.length > 0) {
         this.content = result.data[0].PageContent;
