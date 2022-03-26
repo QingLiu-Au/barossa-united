@@ -145,7 +145,7 @@ export default {
   methods: {
     async getAllMediaFiles() {
       try {
-        const res = await axios.get("/getMediaFiles.php?PathName=allpages");
+        const res = await axios.get("/GetMediaFiles.php?PathName=allpages");
         if (res && res.data) {
           this.mediaFiles = res.data;
         }
