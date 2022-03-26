@@ -69,6 +69,7 @@
           <v-select
             :options="pages"
             v-model="mediaFiles[index].PageName"
+            class="text-black"
             style="width: 30vw"
           ></v-select>
           <!-- @input="selectedPage(index)" -->
@@ -78,7 +79,7 @@
           <v-select
             :options="identifier"
             v-model="mediaFiles[index].Identifier"
-            style="width: 10vw"
+            style="width: 10vw; color: black"
           ></v-select>
           <!-- @input="selectedIdentifier(index)" -->
         </td>
