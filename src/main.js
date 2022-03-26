@@ -42,7 +42,8 @@ Vue.config.productionTip = false;
 Vue.component("v-select", vSelect);
 
 // set base URL
-axios.defaults.baseURL = "http://localhost:8082/5work/barossa-united";
+// axios.defaults.baseURL = "http://localhost:8082/5work/barossa-united";
+axios.defaults.baseURL = "https://borassaunitedsvr.herokuapp.com";
 
 // Add a request interceptor
 axios.interceptors.request.use(
