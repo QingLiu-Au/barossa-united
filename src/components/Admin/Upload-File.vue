@@ -77,9 +77,10 @@
         </td>
         <td>
           <v-select
+            class="text-black"
             :options="identifier"
             v-model="mediaFiles[index].Identifier"
-            style="width: 10vw; color: black"
+            style="width: 10vw"
           ></v-select>
           <!-- @input="selectedIdentifier(index)" -->
         </td>

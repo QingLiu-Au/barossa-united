@@ -38,7 +38,7 @@
       <v-select
         :options="menu"
         label="RouteName"
-        class="my-3"
+        class="my-3 text-black"
         v-model="selectedRoute"
         @input="selected"
       ></v-select>
@@ -96,7 +96,7 @@ export default {
         pageContent: this.content,
       };
 
-      axios.post("/ManagePageContent.php", page);
+      axios.post("/ManagePageContent.php", JSON.stringify(page));
     },
     async selected() {
       const result = await axios.get(
