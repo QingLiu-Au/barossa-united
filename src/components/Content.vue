@@ -1,9 +1,10 @@
 <template>
-  <div class="container" style="height: 100vh: color: black;">
+  <div class="container" style="height: 100vh">
     <div
       id="conetent-in"
       class="bg-white ql-editor sized-box"
       v-html="content"
+      style="color: black"
     ></div>
     <!-- style="overflow: hidden" -->
   </div>

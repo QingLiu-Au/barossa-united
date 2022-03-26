@@ -52,7 +52,11 @@ export default {
         password: "password",
       };
       try {
-        const result = await axios.post("/ManageAdminLogin.php", user);
+        const result = await axios.post(
+          "/ManageAdminLogin.php",
+          JSON.stringify(user),
+          { "content-type": "application/json" }
+        );
         if (result.data == 1) {
           window.sessionStorage.setItem("borassa-user", JSON.stringify(user));
           this.$store.commit("setUserGroup", "admin");
