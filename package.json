@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve  --host borassaunited.herokuapp.com:process.env.PORT",
+    "start": "vue-cli-service serve  --host borassaunited.herokuapp.com",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
