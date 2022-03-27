@@ -6,7 +6,6 @@
       v-html="content"
       style="color: black"
     ></div>
-    <!-- style="overflow: hidden" -->
   </div>
 </template>
 
@@ -22,7 +21,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("getContent", this.$route.path);
+    // this.$store.dispatch("getContent", this.$route.path);
   },
   methods: {},
 };

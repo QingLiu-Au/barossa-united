@@ -25,15 +25,19 @@
           id="navbarNavAltMarkup"
           style="padding-right: 30px"
         >
-          <div v-if="menu.length > 0" class="navbar-nav ms-auto">
+          <div
+            v-if="menu.length > 0"
+            class="navbar-nav ms-auto text-white pr-3"
+          >
             <div
               v-for="(m, index) in menu"
               v-bind:key="m.RouteName"
               @click="linkClicked(index)"
+              class="navi-link"
             >
-              <router-link class="navi-link" :to="m.RoutePath">{{
-                m.RouteName
-              }}</router-link>
+              <!-- <router-link class="navi-link" :to="m.RoutePath"> -->
+              {{ m.RouteName }}
+              <!-- </router-link> -->
             </div>
           </div>
         </div>
@@ -43,6 +47,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Navigation",
   props: {
@@ -70,7 +75,13 @@ export default {
   },
   methods: {
     linkClicked(index) {
-      this.$store.commit("setPath", this.menu[index].RoutePath);
+      axios
+        .get(`/GetPageContent.php?PathName=${this.menu[index].RoutePath}`)
+        .then((content) => {
+          this.$router.push(this.menu[index].RoutePath);
+          this.$store.commit("setPath", this.menu[index].RoutePath);
+          this.$store.commit("setContent", content.data[0].PageContent);
+        });
     },
   },
 };
@@ -82,6 +93,17 @@ export default {
 }
 
 .navi-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  color: #fff;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
   text-decoration: none;
+}
+.navi-link:hover {
+  color: rgb(51, 231, 27);
 }
 </style>
