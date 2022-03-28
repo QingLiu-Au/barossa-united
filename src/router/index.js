@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import ContentPage from "../views/Content-Page.vue";
 import store from "../store/index";
 
 Vue.use(VueRouter);
@@ -14,77 +15,67 @@ const routes = [
   {
     path: "/contact",
     name: "Contact",
+    component: ContentPage,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    // component: () =>
+    //   import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
   },
   {
     path: "/history",
     name: "History",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/presidents-welcome",
     name: "President Welcome",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/fees-registration",
     name: "Fees Registration",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/newsletters",
     name: "Newsletters",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/player-info",
     name: "Player Info",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/policies",
     name: "Policies",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/page1",
     name: "Hidden-page1",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/page2",
     name: "Hidden-page2",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/page3",
     name: "Hidden-page3",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/page4",
     name: "Hidden-page4",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/page5",
     name: "Hidden-page5",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Content-Page.vue"),
+    component: ContentPage,
   },
   {
     path: "/admin-page",
