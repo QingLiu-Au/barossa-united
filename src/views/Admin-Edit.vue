@@ -34,6 +34,8 @@
       </button>
     </div>
     <FileUpload v-if="selectedFunction == 'media'" />
+    <PageManage v-if="selectedFunction == 'page'" />
+    <AdminUser v-if="selectedFunction == 'admin'" />
     <div v-if="selectedFunction == 'content'">
       <v-select
         :options="menu"
@@ -54,12 +56,16 @@
 <script>
 import { VueEditor } from "vue2-editor";
 import FileUpload from "../components/Admin/Upload-File.vue";
+import PageManage from "../components/Admin/Page.vue";
+import AdminUser from "../components/Admin/AdminUser.vue";
 import axios from "axios";
 
 export default {
   components: {
     VueEditor,
     FileUpload,
+    PageManage,
+    AdminUser,
   },
 
   data() {
