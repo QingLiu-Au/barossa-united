@@ -6,7 +6,7 @@
       </div>
     </div>
 </div> -->
-  <div class="container mt-5 pt-5 text-black">
+  <div class="container px-5 mx-5 mt-5 pt-5 text-black">
     <div class="row">
       <div class="col-sm-12 col-md-6" style="width: 60vw">
         <p class="text-capitalize text-center fs-3">
