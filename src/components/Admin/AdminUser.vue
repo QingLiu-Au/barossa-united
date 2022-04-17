@@ -85,7 +85,7 @@
             class="w-100"
             :id="getId('pw', index)"
             v-model="user.Password"
-            placeholder="User password..."
+            placeholder="User Password..."
             disabled
           />
         </div>
