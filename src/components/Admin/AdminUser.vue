@@ -1,5 +1,5 @@
 <template>
-  <div class="container px-5">
+  <div class="container px-5 text-black">
     <div class="text-center">
       <h3>Admin User Management</h3>
     </div>

@@ -48,7 +48,7 @@
       <input type="button" @click="submit()" value="Submit" />
     </div>
     <div v-if="selectedFunction == ''">
-      <p>Welcome Admin User</p>
+      <p class="text-black">Welcome Admin User</p>
     </div>
   </div>
 </template>
