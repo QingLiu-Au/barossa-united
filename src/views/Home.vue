@@ -56,10 +56,13 @@ export default {
   },
   async created() {
     try {
+      const content = await axios.get(`/GetPageContent.php?PathName=/`);
+      this.$store.commit("setContent", content.data[0].PageContent);
       const res = await axios.get("/GetMediaFiles.php?PathName=home");
       this.files = res.data;
       this.files.sort((a, b) => a.Identifier.localeCompare(b.Identifier));
     } catch (_) {}
+    //await this.getContent();
   },
   methods: {
     getImageUrl(index) {
