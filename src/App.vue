@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="get-loading" v-if="$store.state.loading">
-      <img id="get-loader" height="80" src="./assets/loader.gif" />
+      <img id="get-loader" height="120" src="./assets/loader.gif" />
     </div>
     <Navigation id="navi" :showImage="true" />
 

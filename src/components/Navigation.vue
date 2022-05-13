@@ -7,7 +7,7 @@
         <img src="../assets/img/logo.png" style="height: 50px" />
         <!--  -->
         <a class="navbar-brand" href="#/" @click="linkClicked(0)"
-          >Borassa United</a
+          >Barossa United</a
         >
         <button
           class="navbar-toggler"
