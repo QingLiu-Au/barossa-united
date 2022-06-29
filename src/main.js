@@ -28,6 +28,16 @@ import {
   faFacebookSquare,
   faInstagramSquare,
 } from "@fortawesome/free-brands-svg-icons";
+// import * as VueGoogleMaps from "@busability/vue2-google-maps";
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  installComponents: true,
+  load: {
+    key: "AIzaSyB6rFIA7Am5Dn1HtLF0XbjkHlml_YKRpKk",
+    libraries: "places",
+  },
+});
 
 library.add(faTwitterSquare);
 library.add(faFacebookSquare);

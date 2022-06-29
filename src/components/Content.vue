@@ -1,5 +1,6 @@
 <template>
   <div class="container" style="height: 100vh">
+    <GoogleMap v-if="showMap" />
     <div
       id="conetent-in"
       class="bg-white ql-editor sized-box"
@@ -10,20 +11,23 @@
 </template>
 
 <script>
+import GoogleMap from "./GoogleMap.vue";
 export default {
   name: "Content",
   props: {
     msg: String,
   },
+  components: {
+    GoogleMap,
+  },
   computed: {
     content() {
       return this.$store.state.content;
     },
+    showMap() {
+      return this.$store.state.path == "/contact";
+    },
   },
-  created() {
-    // this.$store.dispatch("getContent", this.$route.path);
-  },
-  methods: {},
 };
 </script>
 
