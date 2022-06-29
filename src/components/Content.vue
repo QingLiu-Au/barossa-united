@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="height: 100vh">
-    <GoogleMap v-if="showMap" />
+    <!-- <GoogleMap v-if="showMap" /> -->
     <div
       id="conetent-in"
       class="bg-white ql-editor sized-box"
